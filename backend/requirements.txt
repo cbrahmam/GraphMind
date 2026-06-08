@@ -1,0 +1,16 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-dotenv==1.0.1
+python-multipart==0.0.20
+pydantic==2.10.4
+neo4j==5.27.0
+anthropic==0.42.0
+spacy==3.8.14
+PyMuPDF==1.25.3
+python-docx==1.1.2
+beautifulsoup4==4.12.3
+pandas==2.2.3
+requests==2.32.3
+aiosqlite==0.20.0
+aiofiles==24.1.0
+httpx==0.28.1

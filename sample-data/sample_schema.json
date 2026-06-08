@@ -1,0 +1,28 @@
+{
+  "entity_types": [
+    {"label": "Person", "properties": ["name", "title", "organization", "description"]},
+    {"label": "Organization", "properties": ["name", "type", "industry", "location", "description"]},
+    {"label": "Location", "properties": ["name", "type", "country", "coordinates"]},
+    {"label": "Event", "properties": ["name", "date", "location", "description"]},
+    {"label": "Product", "properties": ["name", "company", "category", "description"]},
+    {"label": "Technology", "properties": ["name", "category", "description"]},
+    {"label": "Concept", "properties": ["name", "domain", "description"]},
+    {"label": "Document", "properties": ["title", "author", "date", "source"]}
+  ],
+  "relationship_types": [
+    {"type": "WORKS_AT", "from": "Person", "to": "Organization"},
+    {"type": "LOCATED_IN", "from": "*", "to": "Location"},
+    {"type": "PART_OF", "from": "Organization", "to": "Organization"},
+    {"type": "FOUNDED_BY", "from": "Organization", "to": "Person"},
+    {"type": "RELATED_TO", "from": "*", "to": "*"},
+    {"type": "USES", "from": "*", "to": "Technology"},
+    {"type": "PARTICIPATED_IN", "from": "Person", "to": "Event"},
+    {"type": "PRODUCED_BY", "from": "Product", "to": "Organization"},
+    {"type": "MENTIONED_IN", "from": "*", "to": "Document"},
+    {"type": "COMPETES_WITH", "from": "Organization", "to": "Organization"},
+    {"type": "ACQUIRED", "from": "Organization", "to": "Organization"},
+    {"type": "INVESTED_IN", "from": "*", "to": "Organization"},
+    {"type": "CAUSED", "from": "Event", "to": "Event"},
+    {"type": "DEPENDS_ON", "from": "Technology", "to": "Technology"}
+  ]
+}

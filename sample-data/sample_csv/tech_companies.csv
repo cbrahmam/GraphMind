@@ -1,0 +1,16 @@
+name,founder,hq,industry,funding,employees
+Anthropic,Dario Amodei,San Francisco,AI Safety,$7.3B,1500
+OpenAI,Sam Altman,San Francisco,Artificial Intelligence,$13.3B,2000
+Google DeepMind,Demis Hassabis,London,AI Research,$0B (Alphabet subsidiary),2500
+Meta AI,Mark Zuckerberg,Menlo Park,Social Media / AI,$0B (Meta subsidiary),3000
+Palantir Technologies,Peter Thiel,Denver,Data Analytics,$0B (Public),3800
+Mistral AI,Arthur Mensch,Paris,AI / LLM,$2.1B,600
+Cohere,Aidan Gomez,Toronto,Enterprise AI,$970M,450
+Pinecone,Edo Liberty,New York,Vector Database,$238M,200
+Weaviate,Bob van Luijt,Amsterdam,Vector Database,$67.7M,120
+ChromaDB,Jeff Huber,San Francisco,Vector Database,$20M,35
+Scale AI,Alexandr Wang,San Francisco,Data Labeling / AI,$1.6B,700
+Databricks,Ali Ghodsi,San Francisco,Data & AI Platform,$4.1B,7000
+Snowflake,Benoit Dageville,Bozeman,Cloud Data Platform,$0B (Public),6800
+Hugging Face,Clement Delangue,New York,AI / Open Source,$395M,250
+Stability AI,Emad Mostaque,London,Generative AI,$260M,200

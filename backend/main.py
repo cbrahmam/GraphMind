@@ -1,0 +1,61 @@
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from backend.database import init_db
+from backend.neo4j_client import neo4j_client
+from backend.routers import ingest, graph, extract, query, insights, export
+from backend.routers import schema as schema_router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    try:
+        neo4j_client.connect()
+    except Exception as e:
+        print(f"Warning: Could not connect to Neo4j: {e}")
+        print("Neo4j features will be unavailable until the database is started.")
+    yield
+    neo4j_client.close()
+
+
+app = FastAPI(
+    title="GraphMind",
+    description="AI Knowledge Graph Builder - Turn unstructured data into connected intelligence",
+    version="0.1.0",
+    lifespan=lifespan,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(ingest.router)
+app.include_router(graph.router)
+app.include_router(schema_router.router)
+app.include_router(extract.router)
+app.include_router(query.router)
+app.include_router(insights.router)
+app.include_router(export.router)
+
+
+@app.get("/api/health")
+async def health_check():
+    neo4j_status = "disconnected"
+    try:
+        neo4j_client.get_stats()
+        neo4j_status = "connected"
+    except Exception:
+        pass
+
+    return {
+        "status": "ok",
+        "neo4j": neo4j_status,
+        "version": "0.1.0",
+    }
