@@ -24,6 +24,7 @@ router = APIRouter(prefix="/api/ingest", tags=["ingestion"])
 
 _processed_docs: dict[str, ProcessedDocument] = {}
 _doc_chunks: dict[str, list] = {}
+_doc_file_paths: dict[str, str] = {}
 
 
 @router.post("/document")
@@ -49,6 +50,7 @@ async def ingest_document(file: UploadFile = File(...)):
     chunks = chunk_for_extraction(doc.text_content, doc.id)
     _processed_docs[doc.id] = doc
     _doc_chunks[doc.id] = chunks
+    _doc_file_paths[doc.id] = str(file_path)
 
     record = {
         "id": doc.id,
@@ -152,6 +154,7 @@ async def ingest_csv(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=f"Failed to process CSV: {e}")
 
     _processed_docs[doc.id] = doc
+    _doc_file_paths[doc.id] = str(file_path)
 
     record = {
         "id": doc.id,
@@ -202,3 +205,7 @@ def get_processed_doc(doc_id: str) -> ProcessedDocument | None:
 
 def get_chunks(doc_id: str) -> list | None:
     return _doc_chunks.get(doc_id)
+
+
+def get_file_path(doc_id: str) -> str | None:
+    return _doc_file_paths.get(doc_id)
