@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import init_db
 from backend.neo4j_client import neo4j_client
-from backend.routers import ingest, graph, extract, query, insights, export
+from backend.routers import ingest, graph, extract, query, insights, export, demo
 from backend.routers import schema as schema_router
 
 
@@ -43,6 +43,7 @@ app.include_router(extract.router)
 app.include_router(query.router)
 app.include_router(insights.router)
 app.include_router(export.router)
+app.include_router(demo.router)
 
 
 @app.get("/api/health")

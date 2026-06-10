@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Network, GitBranch, Upload, MessageSquare, Search } from 'lucide-react'
+import { Network, GitBranch, Upload, MessageSquare, Search, Database } from 'lucide-react'
 import useStore from '../store/useStore'
 import { api } from '../api/client'
 
@@ -18,6 +18,8 @@ export default function Dashboard() {
   const fetchSuggestions = useStore(s => s.fetchSuggestions)
   const fetchIngestions = useStore(s => s.fetchIngestions)
   const [schema, setSchema] = useState(null)
+  const [demoLoading, setDemoLoading] = useState(false)
+  const [demoResult, setDemoResult] = useState(null)
 
   useEffect(() => {
     fetchStats()
@@ -26,6 +28,22 @@ export default function Dashboard() {
     api.graphSchema().then(setSchema).catch(() => {})
   }, [fetchStats, fetchSuggestions, fetchIngestions])
 
+  const loadDemo = async () => {
+    setDemoLoading(true)
+    setDemoResult(null)
+    try {
+      const res = await fetch('/api/demo/load', { method: 'POST' }).then(r => r.json())
+      setDemoResult(res)
+      fetchStats()
+      fetchIngestions()
+      fetchSuggestions()
+    } catch (e) {
+      setDemoResult({ errors: [e.message] })
+    } finally {
+      setDemoLoading(false)
+    }
+  }
+
   const labelCounts = stats?.label_counts || {}
   const relCounts = stats?.relationship_type_counts || {}
   const maxLabel = Math.max(1, ...Object.values(labelCounts))
@@ -33,7 +51,18 @@ export default function Dashboard() {
 
   return (
     <div className="p-6 space-y-6 max-w-6xl">
-      <h2 className="text-2xl font-bold text-white">Dashboard</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-white">Dashboard</h2>
+        <button onClick={loadDemo} disabled={demoLoading} className="flex items-center gap-1.5 px-3 py-1.5 bg-green-600 hover:bg-green-700 disabled:opacity-50 rounded-lg text-white text-sm transition-colors">
+          <Database className="w-3.5 h-3.5" /> {demoLoading ? 'Loading Demo...' : 'Load Demo Data'}
+        </button>
+      </div>
+      {demoResult && (
+        <div className={`rounded-lg p-3 text-sm ${demoResult.errors?.length ? 'bg-yellow-500/10 text-yellow-400' : 'bg-green-500/10 text-green-400'}`}>
+          Processed {demoResult.documents_processed} documents: {demoResult.total_entities} entities, {demoResult.total_relationships} relationships
+          {demoResult.errors?.length > 0 && <span className="block text-yellow-400 mt-1">Warnings: {demoResult.errors.join(', ')}</span>}
+        </div>
+      )}
 
       <div className="grid grid-cols-4 gap-4">
         {[
