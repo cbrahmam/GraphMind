@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useEffect } from 'react'
-import { LayoutDashboard, Network, MessageSquare, Upload, Settings, History } from 'lucide-react'
+import { LayoutDashboard, Network, MessageSquare, Upload, Settings, History, Brain } from 'lucide-react'
 import useStore from '../store/useStore'
 
 const links = [
@@ -9,6 +9,7 @@ const links = [
   { to: '/query', icon: MessageSquare, label: 'Query' },
   { to: '/ingest', icon: Upload, label: 'Ingest Data' },
   { to: '/schema', icon: Settings, label: 'Schema' },
+  { to: '/insights', icon: Brain, label: 'Insights' },
   { to: '/history', icon: History, label: 'History' },
 ]
 

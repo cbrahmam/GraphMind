@@ -6,6 +6,7 @@ import QueryPage from './pages/QueryPage'
 import IngestPage from './pages/IngestPage'
 import SchemaPage from './pages/SchemaPage'
 import HistoryPage from './pages/HistoryPage'
+import InsightsPage from './pages/InsightsPage'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/query" element={<QueryPage />} />
           <Route path="/ingest" element={<IngestPage />} />
           <Route path="/schema" element={<SchemaPage />} />
+          <Route path="/insights" element={<InsightsPage />} />
           <Route path="/history" element={<HistoryPage />} />
         </Routes>
       </main>
