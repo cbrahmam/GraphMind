@@ -1,16 +1,25 @@
 import { NavLink } from 'react-router-dom'
 import { useEffect } from 'react'
-import { LayoutDashboard, Network, MessageSquare, Upload, Settings, History, Brain } from 'lucide-react'
+import {
+  LayoutDashboard, Network, Box, MessageSquare, FileText, Upload,
+  Settings, History, Brain, Clock, Eye, GitCompare, Sliders
+} from 'lucide-react'
 import useStore from '../store/useStore'
 
 const links = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/graph', icon: Network, label: 'Graph Explorer' },
+  { to: '/graph', icon: Network, label: 'Graph 2D' },
+  { to: '/graph3d', icon: Box, label: 'Graph 3D' },
   { to: '/query', icon: MessageSquare, label: 'Query' },
+  { to: '/templates', icon: FileText, label: 'Templates' },
   { to: '/ingest', icon: Upload, label: 'Ingest Data' },
-  { to: '/schema', icon: Settings, label: 'Schema' },
+  { to: '/schema', icon: Sliders, label: 'Schema' },
   { to: '/insights', icon: Brain, label: 'Insights' },
+  { to: '/timeline', icon: Clock, label: 'Timeline' },
+  { to: '/watchlist', icon: Eye, label: 'Watchlist' },
+  { to: '/diff', icon: GitCompare, label: 'Graph Diff' },
   { to: '/history', icon: History, label: 'History' },
+  { to: '/settings', icon: Settings, label: 'Settings' },
 ]
 
 export default function Sidebar() {
@@ -20,37 +29,37 @@ export default function Sidebar() {
   useEffect(() => { fetchStats() }, [fetchStats])
 
   return (
-    <aside className="w-64 bg-[#161b22] border-r border-[#30363d] flex flex-col shrink-0">
-      <div className="p-5 border-b border-[#30363d]">
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <Network className="w-6 h-6 text-purple-400" />
+    <aside className="w-56 bg-[#161b22] border-r border-[#30363d] flex flex-col shrink-0">
+      <div className="p-4 border-b border-[#30363d]">
+        <h1 className="text-lg font-bold text-white flex items-center gap-2">
+          <Network className="w-5 h-5 text-purple-400" />
           GraphMind
         </h1>
-        <p className="text-xs text-gray-500 mt-1">AI Knowledge Graph Builder</p>
+        <p className="text-xs text-gray-500 mt-0.5">AI Knowledge Graph Builder</p>
       </div>
 
-      <nav className="flex-1 p-3 space-y-1">
+      <nav className="flex-1 p-2 space-y-0.5 overflow-y-auto">
         {links.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
             end={to === '/'}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+              `flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
                 isActive
                   ? 'bg-purple-500/10 text-purple-400'
                   : 'text-gray-400 hover:text-gray-200 hover:bg-[#1c2128]'
               }`
             }
           >
-            <Icon className="w-4 h-4" />
+            <Icon className="w-3.5 h-3.5" />
             {label}
           </NavLink>
         ))}
       </nav>
 
       {stats && (
-        <div className="p-4 border-t border-[#30363d] text-xs text-gray-500 space-y-1">
+        <div className="p-3 border-t border-[#30363d] text-xs text-gray-500 space-y-0.5">
           <div className="flex justify-between">
             <span>Nodes</span>
             <span className="text-gray-300">{stats.total_nodes ?? 0}</span>

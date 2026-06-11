@@ -5,7 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import init_db
 from backend.neo4j_client import neo4j_client
-from backend.routers import ingest, graph, extract, query, insights, export, demo
+from backend.routers import (
+    ingest, graph, extract, query, insights, export, demo,
+    advanced_query, annotations, feed, ws, diff,
+)
+from backend.routers import scheduler as scheduler_router
+from backend.routers import watchlist as watchlist_router
+from backend.routers import workspaces as workspaces_router
+from backend.routers import auth as auth_router
 from backend.routers import schema as schema_router
 
 
@@ -24,7 +31,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="GraphMind",
     description="AI Knowledge Graph Builder - Turn unstructured data into connected intelligence",
-    version="0.1.0",
+    version="0.2.0",
     lifespan=lifespan,
 )
 
@@ -41,9 +48,18 @@ app.include_router(graph.router)
 app.include_router(schema_router.router)
 app.include_router(extract.router)
 app.include_router(query.router)
+app.include_router(advanced_query.router)
 app.include_router(insights.router)
 app.include_router(export.router)
 app.include_router(demo.router)
+app.include_router(annotations.router)
+app.include_router(feed.router)
+app.include_router(scheduler_router.router)
+app.include_router(watchlist_router.router)
+app.include_router(workspaces_router.router)
+app.include_router(auth_router.router)
+app.include_router(diff.router)
+app.include_router(ws.router)
 
 
 @app.get("/api/health")
@@ -58,5 +74,5 @@ async def health_check():
     return {
         "status": "ok",
         "neo4j": neo4j_status,
-        "version": "0.1.0",
+        "version": "0.2.0",
     }
