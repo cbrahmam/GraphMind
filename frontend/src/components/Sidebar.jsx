@@ -2,7 +2,9 @@ import { NavLink } from 'react-router-dom'
 import { useEffect } from 'react'
 import {
   LayoutDashboard, Network, Box, MessageSquare, FileText, Upload,
-  Settings, History, Brain, Clock, Eye, GitCompare, Sliders
+  Settings, History, Brain, Clock, Eye, GitCompare, Sliders,
+  AlertTriangle, Sparkles, Search, Crown, Rss, FileBarChart,
+  Database, Shield
 } from 'lucide-react'
 import useStore from '../store/useStore'
 
@@ -13,11 +15,19 @@ const links = [
   { to: '/query', icon: MessageSquare, label: 'Query' },
   { to: '/templates', icon: FileText, label: 'Templates' },
   { to: '/ingest', icon: Upload, label: 'Ingest Data' },
+  { to: '/rss', icon: Rss, label: 'RSS Feeds' },
   { to: '/schema', icon: Sliders, label: 'Schema' },
   { to: '/insights', icon: Brain, label: 'Insights' },
+  { to: '/predictions', icon: Sparkles, label: 'Predictions' },
+  { to: '/influence', icon: Crown, label: 'Influence' },
+  { to: '/gaps', icon: Search, label: 'Gaps' },
+  { to: '/anomaly', icon: AlertTriangle, label: 'Anomalies' },
+  { to: '/vectors', icon: Database, label: 'Vectors' },
   { to: '/timeline', icon: Clock, label: 'Timeline' },
   { to: '/watchlist', icon: Eye, label: 'Watchlist' },
   { to: '/diff', icon: GitCompare, label: 'Graph Diff' },
+  { to: '/reports', icon: FileBarChart, label: 'Reports' },
+  { to: '/audit', icon: Shield, label: 'Audit Log' },
   { to: '/history', icon: History, label: 'History' },
   { to: '/settings', icon: Settings, label: 'Settings' },
 ]

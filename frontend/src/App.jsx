@@ -13,6 +13,14 @@ import WatchlistPage from './pages/WatchlistPage'
 import TemplatesPage from './pages/TemplatesPage'
 import DiffPage from './pages/DiffPage'
 import SettingsPage from './pages/SettingsPage'
+import AnomalyPage from './pages/AnomalyPage'
+import PredictionsPage from './pages/PredictionsPage'
+import GapsPage from './pages/GapsPage'
+import InfluencePage from './pages/InfluencePage'
+import RSSPage from './pages/RSSPage'
+import ReportsPage from './pages/ReportsPage'
+import VectorsPage from './pages/VectorsPage'
+import AuditPage from './pages/AuditPage'
 import useWebSocket from './store/useWebSocket'
 
 export default function App() {
@@ -35,6 +43,14 @@ export default function App() {
           <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/diff" element={<DiffPage />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/anomaly" element={<AnomalyPage />} />
+          <Route path="/predictions" element={<PredictionsPage />} />
+          <Route path="/gaps" element={<GapsPage />} />
+          <Route path="/influence" element={<InfluencePage />} />
+          <Route path="/rss" element={<RSSPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/vectors" element={<VectorsPage />} />
+          <Route path="/audit" element={<AuditPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </main>
