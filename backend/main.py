@@ -11,6 +11,11 @@ from backend.routers import (
     entity_timeline, anomaly, multilang, rss, wikipedia,
     email_ingest, temporal, influence, predictions, gaps,
     views, reports, vectors, audit,
+    summarizer, causal, hypothesis, disambiguate, sentiment,
+    pathfinder, comparison, neighborhood, notifications,
+    lineage, duplicates, reliability, verify, webhooks,
+    plugins, flexible_query, backups, api_keys, motifs,
+    whatif, resilience, dashboards,
 )
 from backend.routers import scheduler as scheduler_router
 from backend.routers import watchlist as watchlist_router
@@ -35,7 +40,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="GraphMind",
     description="AI Knowledge Graph Builder - Turn unstructured data into connected intelligence",
-    version="0.3.0",
+    version="0.4.0",
     lifespan=lifespan,
 )
 
@@ -79,6 +84,28 @@ app.include_router(views.router)
 app.include_router(reports.router)
 app.include_router(vectors.router)
 app.include_router(audit.router)
+app.include_router(summarizer.router)
+app.include_router(causal.router)
+app.include_router(hypothesis.router)
+app.include_router(disambiguate.router)
+app.include_router(sentiment.router)
+app.include_router(pathfinder.router)
+app.include_router(comparison.router)
+app.include_router(neighborhood.router)
+app.include_router(notifications.router)
+app.include_router(lineage.router)
+app.include_router(duplicates.router)
+app.include_router(reliability.router)
+app.include_router(verify.router)
+app.include_router(webhooks.router)
+app.include_router(plugins.router)
+app.include_router(flexible_query.router)
+app.include_router(backups.router)
+app.include_router(api_keys.router)
+app.include_router(motifs.router)
+app.include_router(whatif.router)
+app.include_router(resilience.router)
+app.include_router(dashboards.router)
 
 
 @app.get("/api/health")
@@ -93,5 +120,5 @@ async def health_check():
     return {
         "status": "ok",
         "neo4j": neo4j_status,
-        "version": "0.3.0",
+        "version": "0.4.0",
     }

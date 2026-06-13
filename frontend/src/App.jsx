@@ -21,6 +21,15 @@ import RSSPage from './pages/RSSPage'
 import ReportsPage from './pages/ReportsPage'
 import VectorsPage from './pages/VectorsPage'
 import AuditPage from './pages/AuditPage'
+import PathfinderPage from './pages/PathfinderPage'
+import ComparisonPage from './pages/ComparisonPage'
+import HypothesisPage from './pages/HypothesisPage'
+import ResiliencePage from './pages/ResiliencePage'
+import MotifsPage from './pages/MotifsPage'
+import WhatIfPage from './pages/WhatIfPage'
+import DuplicatesPage from './pages/DuplicatesPage'
+import BackupsPage from './pages/BackupsPage'
+import NotificationsPage from './pages/NotificationsPage'
 import useWebSocket from './store/useWebSocket'
 
 export default function App() {
@@ -37,20 +46,29 @@ export default function App() {
           <Route path="/query" element={<QueryPage />} />
           <Route path="/templates" element={<TemplatesPage />} />
           <Route path="/ingest" element={<IngestPage />} />
+          <Route path="/rss" element={<RSSPage />} />
           <Route path="/schema" element={<SchemaPage />} />
           <Route path="/insights" element={<InsightsPage />} />
+          <Route path="/pathfinder" element={<PathfinderPage />} />
+          <Route path="/comparison" element={<ComparisonPage />} />
+          <Route path="/hypothesis" element={<HypothesisPage />} />
+          <Route path="/predictions" element={<PredictionsPage />} />
+          <Route path="/influence" element={<InfluencePage />} />
+          <Route path="/gaps" element={<GapsPage />} />
+          <Route path="/anomaly" element={<AnomalyPage />} />
+          <Route path="/motifs" element={<MotifsPage />} />
+          <Route path="/whatif" element={<WhatIfPage />} />
+          <Route path="/resilience" element={<ResiliencePage />} />
+          <Route path="/duplicates" element={<DuplicatesPage />} />
+          <Route path="/vectors" element={<VectorsPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
           <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/diff" element={<DiffPage />} />
-          <Route path="/history" element={<HistoryPage />} />
-          <Route path="/anomaly" element={<AnomalyPage />} />
-          <Route path="/predictions" element={<PredictionsPage />} />
-          <Route path="/gaps" element={<GapsPage />} />
-          <Route path="/influence" element={<InfluencePage />} />
-          <Route path="/rss" element={<RSSPage />} />
           <Route path="/reports" element={<ReportsPage />} />
-          <Route path="/vectors" element={<VectorsPage />} />
+          <Route path="/backups" element={<BackupsPage />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
           <Route path="/audit" element={<AuditPage />} />
+          <Route path="/history" element={<HistoryPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </main>

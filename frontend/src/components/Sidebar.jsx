@@ -4,7 +4,8 @@ import {
   LayoutDashboard, Network, Box, MessageSquare, FileText, Upload,
   Settings, History, Brain, Clock, Eye, GitCompare, Sliders,
   AlertTriangle, Sparkles, Search, Crown, Rss, FileBarChart,
-  Database, Shield
+  Database, Shield, Route, FlaskConical, Shapes, FlaskRound,
+  ShieldAlert, Copy, HardDrive, Bell, GitBranch
 } from 'lucide-react'
 import useStore from '../store/useStore'
 
@@ -18,15 +19,24 @@ const links = [
   { to: '/rss', icon: Rss, label: 'RSS Feeds' },
   { to: '/schema', icon: Sliders, label: 'Schema' },
   { to: '/insights', icon: Brain, label: 'Insights' },
+  { to: '/pathfinder', icon: Route, label: 'Path Finder' },
+  { to: '/comparison', icon: GitBranch, label: 'Compare' },
+  { to: '/hypothesis', icon: FlaskConical, label: 'Hypothesis' },
   { to: '/predictions', icon: Sparkles, label: 'Predictions' },
   { to: '/influence', icon: Crown, label: 'Influence' },
   { to: '/gaps', icon: Search, label: 'Gaps' },
   { to: '/anomaly', icon: AlertTriangle, label: 'Anomalies' },
+  { to: '/motifs', icon: Shapes, label: 'Motifs' },
+  { to: '/whatif', icon: FlaskRound, label: 'What-If' },
+  { to: '/resilience', icon: ShieldAlert, label: 'Resilience' },
+  { to: '/duplicates', icon: Copy, label: 'Duplicates' },
   { to: '/vectors', icon: Database, label: 'Vectors' },
   { to: '/timeline', icon: Clock, label: 'Timeline' },
   { to: '/watchlist', icon: Eye, label: 'Watchlist' },
   { to: '/diff', icon: GitCompare, label: 'Graph Diff' },
   { to: '/reports', icon: FileBarChart, label: 'Reports' },
+  { to: '/backups', icon: HardDrive, label: 'Backups' },
+  { to: '/notifications', icon: Bell, label: 'Notifications' },
   { to: '/audit', icon: Shield, label: 'Audit Log' },
   { to: '/history', icon: History, label: 'History' },
   { to: '/settings', icon: Settings, label: 'Settings' },
